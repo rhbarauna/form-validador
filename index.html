@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form {
+      display: flex;
+      width: 50%;
+      height: 100px;
+      flex-direction: column;
+    }
+    button{
+      margin-top: 10px
+    }
+    input {
+      border: 2px solid gray;
+      border-radius: 3px;
+      margin-top: 10px;
+      transition: border 1s;
+    }
+    input.error {
+      border-color: red;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+
+    input.error ~ small {
+      background: red;
+      color: white;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+      padding: 2px 5px;
+      height: auto;
+      transition: background 1s ease-in-out;
+      animation: slide-down 1s ease;
+    }
+
+    @keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(auto);
+    }
+}
+  </style>
+</head>
+<body>
+  <form method='post' class='form-validator' id='form'>
+    <input type="text" name='name' id='name' data-rules="required|min=2">
+    <input type="email" name='email' id='email' data-rules="email">
+    <input type="password" name="password" id="password" data-rules="required">
+    <button form='form'>ENVIAR</button>
+  </form>
+
+  
+  <script src="index.js"></script>
+</body>
+</html>
