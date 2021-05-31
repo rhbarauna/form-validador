@@ -21,6 +21,14 @@
       margin-top: 10px;
       transition: border 1s;
     }
+    
+    input ~ small {
+      animation: slide-up 1s ease;
+      transition: background 1s ease-out;
+      line-height: 16px;
+      height: auto;
+    }
+
     input.error {
       border-color: red;
       border-bottom-right-radius: 0px;
@@ -33,21 +41,31 @@
       border-bottom-right-radius: 3px;
       border-bottom-left-radius: 3px;
       padding: 2px 5px;
-      height: auto;
-      transition: background 1s ease-in-out;
+      transition: border 1s ease-in;
       animation: slide-down 1s ease;
     }
 
     @keyframes slide-down {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
+      0% {
+          opacity: 0;
+          transform: translateY(0);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(auto);
+      }
     }
-    100% {
-        opacity: 1;
-        transform: translateY(auto);
+
+    @keyframes slide-down {
+      0% {
+          opacity: 0;
+          transform: translateY(auto);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
     }
-}
   </style>
 </head>
 <body>

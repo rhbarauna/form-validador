@@ -3,15 +3,20 @@ const FormValidator = {
     const form = document.querySelector('.form-validator');
     const inputs = form.querySelectorAll('input');
     const smalls = form.querySelectorAll('small');
-    
+
     inputs.forEach(input => input.classList.remove('error'));
-    smalls.forEach(small => small.remove());
+    smalls.forEach(small => small.innerHTML = "");
   },
   showError:(input, error) => {
-    let errorEl = document.createElement(`small`);
-    errorEl.innerHTML = error
     input.classList.add('error')
-    input.parentElement.insertBefore(errorEl, input.nextElementSibling);
+    let errorEl = input.nextElementSibling;
+    
+    if(errorEl.tagName.toLowerCase() != 'small') {
+      errorEl = document.createElement(`small`);
+      input.parentElement.insertBefore(errorEl, input.nextElementSibling);
+    }
+
+    errorEl.innerHTML = error
   },
   
   checkRules: (value, rules) => {
